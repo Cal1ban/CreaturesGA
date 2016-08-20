@@ -4,7 +4,7 @@
 
 //creature creation
 var Creature = {
-  init: function(name, age, location, seed){
+  init(name, age, location, seed){
     this.name = name;
     this.age = age;
     this.location = location;
@@ -13,30 +13,30 @@ var Creature = {
     this.type = "creature";
   },
 
-  traits: function(){
+  traits(){
     Math.seedrandom(this.seed);
-    for(var i=0;i<10;++i){
+    for(let i=0;i<10;++i){
     this.traitArray[i] = Math.floor(Math.random()*10)
     }
 
   return this.traitArray;
 },
-  announce: function(){
+  announce(){
     console.log('A '+this.name+' appeared!');
   }
 };
 
 //location creation
 var Location = {
-  init: function(desc, biome){
+  init(desc, biome){
     this.name = desc;
     this.biome = biome;
     this.traitArray = [];
     this.type = "location";
   },
-  traits: function(){
+  traits(){
     Math.seedrandom(this.biome);
-    for(var i=0;i<10;++i){
+    for(let i=0;i<10;++i){
     this.traitArray[i] = Math.floor(Math.random()*10)
     }
 
@@ -52,7 +52,7 @@ var GA = (function() {
         if (name.type == "creature"){
       var genome = [];
       traits = name.traits();
-          for(var i = 0; i<traits.length;++i){
+          for(let i = 0; i<traits.length;++i){
               genome[i]=traits[i];
               }
       return genome.join("");
@@ -61,7 +61,7 @@ var GA = (function() {
       else{
         var target = [];
         traits = name.traits();
-            for(var i = 0; i<traits.length;++i){
+            for(let i = 0; i<traits.length;++i){
                 target[i]=traits[i];
                 }
         return target.join("");
@@ -72,7 +72,7 @@ var GA = (function() {
             {
             var fitness = 0;
 
-                for(var i = 0; i<target.length;++i){
+                for(let i = 0; i<target.length;++i){
                   x=genome[i];
                   y=target[i]
                   fitness = fitness + +x + +y;
