@@ -56,18 +56,6 @@ var buildPoints = function(Group,numPoints,xSet,ySet,zSet){
 
 };
 
-// the control gui
-/*var controls = new function () {
-
-    this.redraw = function () {
-        scene.remove(spGroup);
-        scene.remove(skinMesh);
-        buildPoints();
-    };
-}
-  var gui = new dat.GUI();
-  gui.add(controls, 'redraw');
-*/
 
 
 var skinPoints = function(geom) {
@@ -143,7 +131,7 @@ Group1.establish('flob');
 
 init.buildPoints(
   Group1, //name
-  100, //points
+  10, //points
   0, //x
   0, //y
   0); //z
@@ -155,7 +143,7 @@ Group2.establish('flib');
 
 init.buildPoints(
   Group2, //name
-  100, //points
+  10, //points
   -15, //x
   -15, //y
   -15); //z
