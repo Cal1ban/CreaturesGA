@@ -1,12 +1,12 @@
 import redis
-from People.Interface.move_pb2 import Movement, Direction, LEFT, RIGHT, UP, DOWN
-from People.Interface.move_pb2 import UpdatedPosition
+from People.Interface.move import MovementRequest
+from People.Interface.move import UpdatedPosition
+
 
 class PositionCache:
+    def __init__(self,
+                 conn=redis.StrictRedis(host='localhost', port=6379)):
 
-    def __init__(self, 
-                 conn = redis.StrictRedis(host = 'localhost', port=6379)):
-                 
         self.conn = conn
 
     def get_pos(self, p_id: int):
@@ -23,26 +23,12 @@ class PositionCache:
         self.conn.set(x_key, x)
         self.conn.set(y_key, y)
 
-    def update_position(self, move: Movement) -> UpdatedPosition:
-        x, y = self.get_pos(move.p_id)
-        print("In cache {0}".format(str(x)))
-        print(move.direction)
-        if move.direction == RIGHT:
-            x += 1
-            print("r")
-        elif move.direction == LEFT:
-            x -= 1
-        elif move.direction == UP:
-            y += 1
-        else:
-            y -= 1
-
-        self.set_pos(move.p_id, x, y)
+    def update_position(self, move: MovementRequest) -> UpdatedPosition:
+        self.set_pos(move.p_id, move.destination.x_pos, move.destination.y_pos)
 
         update = UpdatedPosition()
         update.p_id = move.p_id
-        update.x_pos = x
-        update.y_pos = y
-        print(x, y)
+        update.x_pos = move.destination.x_pos
+        update.y_pos = move.destination.y_pos
         print(update)
         return update

@@ -5,6 +5,7 @@ from typing import Iterable
 import itertools
 from time import sleep
 
+
 class Map:
     def __init__(self, grid):
         self.grid = grid
@@ -25,7 +26,8 @@ class Map:
     def add_distributions(self):
         for row in self.grid:
             for col in row:
-                col.surrounding_terrain = create_terrain_distribution(self.get_area_around_coordinate(col.x_pos, col.y_pos, 2))
+                col.surrounding_terrain = create_terrain_distribution(
+                    self.get_area_around_coordinate(col.x_pos, col.y_pos, 2))
 
     def get_regions(self):
         output = {}
@@ -41,6 +43,7 @@ class Map:
         for row in self.grid:
             print(",".join([str(x.region) for x in row]))
         print("----")
+
 
 def manhatten_distance(first_square: Square, second_square: Square) -> int:
     return abs(first_square.x_pos - second_square.x_pos) + abs(first_square.y_pos - second_square.y_pos)

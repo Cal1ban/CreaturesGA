@@ -1,10 +1,8 @@
 from Mapping.Map import Map
 from Mapping.Square import Square
-from typing import List, Callable
-from Mapping.Map import manhatten_distance
-import itertools
-from Mapping.Terrain import create_terrain_distribution, average_distribution, TerrainDistribution
+from Mapping.Terrain import average_distribution
 from operator import itemgetter
+
 
 class Region:
     def __init__(self, world, squares):
@@ -63,6 +61,3 @@ def modify_regions(world_map: Map):
             col.region = new_region
 
     return update, world_map
-
-
-

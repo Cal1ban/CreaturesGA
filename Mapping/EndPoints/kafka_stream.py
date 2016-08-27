@@ -1,7 +1,5 @@
 from kafka import KafkaConsumer, KafkaProducer
-from People.Interface.move_pb2 import Movement, UpdatedPosition
-from time import sleep
-from Mapping.Interface.map_pb2 import MapFragment, Cell, RIVER
+from People.Interface.move_pb2 import UpdatedPosition
 from Mapping.MapRepository import MapRepository
 
 consumer = KafkaConsumer('position', bootstrap_servers=['0.0.0.0:9092'])

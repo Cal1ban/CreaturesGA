@@ -3,7 +3,6 @@
 
 import sys
 _b=sys.version_info[0]<3 and (lambda x:x) or (lambda x:x.encode('latin1'))
-from google.protobuf.internal import enum_type_wrapper
 from google.protobuf import descriptor as _descriptor
 from google.protobuf import message as _message
 from google.protobuf import reflection as _reflection
@@ -14,73 +13,45 @@ from google.protobuf import descriptor_pb2
 _sym_db = _symbol_database.Default()
 
 
-import map_pb2
+import Mapping.Interface.map_pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='move.proto',
   package='',
-  serialized_pb=_b('\n\nmove.proto\x1a\tmap.proto\"4\n\x08Movement\x12\x0c\n\x04p_id\x18\x01 \x01(\x05\x12\x1a\n\x0b\x64\x65stination\x18\x02 \x01(\x0b\x32\x05.Cell\"=\n\x0fUpdatedPosition\x12\x0c\n\x04p_id\x18\x01 \x01(\x05\x12\r\n\x05x_pos\x18\x02 \x01(\x05\x12\r\n\x05y_pos\x18\x03 \x01(\x05*2\n\tDirection\x12\x08\n\x04LEFT\x10\x01\x12\t\n\x05RIGHT\x10\x02\x12\x06\n\x02UP\x10\x03\x12\x08\n\x04\x44OWN\x10\x04')
+  serialized_pb=_b('\n\nmove.proto\x1a\x1bMapping/Interface/map.proto\"I\n\x0fMovementRequest\x12\x0c\n\x04p_id\x18\x01 \x01(\x05\x12\x1a\n\x0b\x64\x65stination\x18\x02 \x01(\x0b\x32\x05.Cell\x12\x0c\n\x04type\x18\x03 \x01(\t\"K\n\x0fUpdatedPosition\x12\x0c\n\x04p_id\x18\x01 \x01(\x05\x12\r\n\x05x_pos\x18\x02 \x01(\x05\x12\r\n\x05y_pos\x18\x03 \x01(\x05\x12\x0c\n\x04type\x18\x04 \x01(\t')
   ,
-  dependencies=[map_pb2.DESCRIPTOR,])
+  dependencies=[Mapping.Interface.map_pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
-_DIRECTION = _descriptor.EnumDescriptor(
-  name='Direction',
-  full_name='Direction',
-  filename=None,
-  file=DESCRIPTOR,
-  values=[
-    _descriptor.EnumValueDescriptor(
-      name='LEFT', index=0, number=1,
-      options=None,
-      type=None),
-    _descriptor.EnumValueDescriptor(
-      name='RIGHT', index=1, number=2,
-      options=None,
-      type=None),
-    _descriptor.EnumValueDescriptor(
-      name='UP', index=2, number=3,
-      options=None,
-      type=None),
-    _descriptor.EnumValueDescriptor(
-      name='DOWN', index=3, number=4,
-      options=None,
-      type=None),
-  ],
-  containing_type=None,
-  options=None,
-  serialized_start=142,
-  serialized_end=192,
-)
-_sym_db.RegisterEnumDescriptor(_DIRECTION)
-
-Direction = enum_type_wrapper.EnumTypeWrapper(_DIRECTION)
-LEFT = 1
-RIGHT = 2
-UP = 3
-DOWN = 4
 
 
 
-_MOVEMENT = _descriptor.Descriptor(
-  name='Movement',
-  full_name='Movement',
+_MOVEMENTREQUEST = _descriptor.Descriptor(
+  name='MovementRequest',
+  full_name='MovementRequest',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='p_id', full_name='Movement.p_id', index=0,
+      name='p_id', full_name='MovementRequest.p_id', index=0,
       number=1, type=5, cpp_type=1, label=1,
       has_default_value=False, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='destination', full_name='Movement.destination', index=1,
+      name='destination', full_name='MovementRequest.destination', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='type', full_name='MovementRequest.type', index=2,
+      number=3, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
@@ -95,8 +66,8 @@ _MOVEMENT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=25,
-  serialized_end=77,
+  serialized_start=43,
+  serialized_end=116,
 )
 
 
@@ -128,6 +99,13 @@ _UPDATEDPOSITION = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='type', full_name='UpdatedPosition.type', index=3,
+      number=4, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -139,21 +117,20 @@ _UPDATEDPOSITION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=79,
-  serialized_end=140,
+  serialized_start=118,
+  serialized_end=193,
 )
 
-_MOVEMENT.fields_by_name['destination'].message_type = map_pb2._CELL
-DESCRIPTOR.message_types_by_name['Movement'] = _MOVEMENT
+_MOVEMENTREQUEST.fields_by_name['destination'].message_type = Mapping.Interface.map_pb2._CELL
+DESCRIPTOR.message_types_by_name['MovementRequest'] = _MOVEMENTREQUEST
 DESCRIPTOR.message_types_by_name['UpdatedPosition'] = _UPDATEDPOSITION
-DESCRIPTOR.enum_types_by_name['Direction'] = _DIRECTION
 
-Movement = _reflection.GeneratedProtocolMessageType('Movement', (_message.Message,), dict(
-  DESCRIPTOR = _MOVEMENT,
+MovementRequest = _reflection.GeneratedProtocolMessageType('MovementRequest', (_message.Message,), dict(
+  DESCRIPTOR = _MOVEMENTREQUEST,
   __module__ = 'move_pb2'
-  # @@protoc_insertion_point(class_scope:Movement)
+  # @@protoc_insertion_point(class_scope:MovementRequest)
   ))
-_sym_db.RegisterMessage(Movement)
+_sym_db.RegisterMessage(MovementRequest)
 
 UpdatedPosition = _reflection.GeneratedProtocolMessageType('UpdatedPosition', (_message.Message,), dict(
   DESCRIPTOR = _UPDATEDPOSITION,

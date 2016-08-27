@@ -1,11 +1,12 @@
 import flask
-import redis 
+import redis
 import json
 from flask import request
 from message_pb2 import Message
 from kafka import KafkaProducer
 
 app = flask.Flask(__name__)
+
 
 @app.route('/market/user/<int:user_id>', methods=['GET'])
 def user(user_id):
@@ -15,6 +16,7 @@ def user(user_id):
         return json.dumps({"id": user_id, "amount": int(amount)})
     except TypeError:
         return json.dumps({"id": user_id, "amount": 0})
+
 
 @app.route('/market/trade', methods=['POST'])
 def trade():
@@ -38,6 +40,6 @@ def trade():
 
 
 if __name__ == '__main__':
-   conn = redis.StrictRedis(host = 'localhost', port=6379)  
-   producer = KafkaProducer(bootstrap_servers=['0.0.0.0:9092'])
-   app.run(debug=True)
+    conn = redis.StrictRedis(host='localhost', port=6379)
+    producer = KafkaProducer(bootstrap_servers=['0.0.0.0:9092'])
+    app.run(debug=True)

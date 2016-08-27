@@ -1,14 +1,6 @@
-from enum import Enum
-from itertools import groupby
 from math import sqrt
 from statistics import mean
-
-
-class Terrain(Enum):
-    river = 1
-    sea = 2
-    plain = 3
-    mountain = 4
+from Mapping.Interface.map import Terrain
 
 
 class TerrainDistribution:
@@ -43,6 +35,7 @@ def average_distribution(distributions):
         mean([x.normalized_weights()[2] for x in distributions]),
         mean([x.normalized_weights()[3] for x in distributions])
     )
+
 
 def purity(region):
     return sqrt(region.difference_to_distribution(region))

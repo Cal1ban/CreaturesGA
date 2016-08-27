@@ -3,6 +3,7 @@ import websockets
 from People.Storage import PositionRepository
 from People.Interface.move_pb2 import UpdatedPosition
 
+
 async def get_position(websocket, path):
     input = await websocket.recv()
     p_id = int(input.encode("utf-8"))
@@ -14,8 +15,10 @@ async def get_position(websocket, path):
 
     await websocket.send(pos.SerializeToString())
 
+
 async def on_connect(ws):
     print("Connected")
+
 
 pos_repo = PositionRepository()
 start_server = register_movement.serve(get_position, 'localhost', 5001)

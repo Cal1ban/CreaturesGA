@@ -6,15 +6,15 @@ from People.Interface.move_pb2 import UpdatedPosition
 from Mapping.Interface.map_pb2 import Cell, Terrain, Row, Map, RIVER, SEA, MapFragment
 import redis
 
-class MapRepository:  
 
-    def __init__(self, conn = redis.StrictRedis(host = 'localhost', port=6379), factory = MapFactory()):
+class MapRepository:
+    def __init__(self, conn=redis.StrictRedis(host='localhost', port=6379), factory=MapFactory()):
         self.conn = conn
         self.factory = factory
         self.cache = {}
 
     def new_map(self):
-        
+
         def generate_key(key, x, y):
             return "map:{0}:x:{1}:y:{2}".format(str(key), str(x), str(y))
 

@@ -4,14 +4,15 @@ import flask
 from message_pb2 import Message
 from Market.commodities_pb2 import Commodity
 
-conn = redis.StrictRedis(host = 'localhost', port=6379)   
+conn = redis.StrictRedis(host='localhost', port=6379)
+
 
 def get_type_of_message(message):
     return message.ListFields()[0][0].name
 
+
 client = KafkaClient(hosts=['0.0.0.0:9092'])
 client.ensure_topic_exists('resource')
-
 
 consumer = KafkaConsumer('resource', bootstrap_servers=['0.0.0.0:9092'])
 for message in consumer:

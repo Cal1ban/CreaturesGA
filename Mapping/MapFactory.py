@@ -3,8 +3,8 @@ from typing import Iterable
 from Mapping.Interface.map_pb2 import Cell, Terrain, Row, Map, RIVER, SEA
 import redis
 
-class MapFactory:  
 
+class MapFactory:
     def create_random_map_data(self, size):
         mappy = Map()
         for x in range(size):

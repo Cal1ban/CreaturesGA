@@ -3,9 +3,7 @@ from google.protobuf.reflection import GeneratedProtocolMessageType
 from google.protobuf.message import Message as ProtocolMessage, DecodeError
 
 
-
 def copy_pb_to_dict(dictionary, instance):
-    
     for descriptor, value in instance.ListFields():
         # If the field is another Protobuf Message, make a new dictionary
         # and copy the messages fields

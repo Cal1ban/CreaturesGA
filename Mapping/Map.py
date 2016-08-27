@@ -1,11 +1,8 @@
-from Mapping.Square import Square
-from Mapping.Terrain import Terrain, create_terrain_distribution
+from Mapping.Terrain import Terrain
 from random import choice
-from typing import Iterable
-import itertools
-from time import sleep
-from Mapping.Interface.map_pb2 import Map, MapFragment, Terrain
-from People.Interface.move_pb2 import UpdatedPosition
+from Mapping.Interface.map import MapFragment, Terrain, Cell
+from People.Interface.move import UpdatedPosition
+
 
 class Map:
     def __init__(self, data):
@@ -26,8 +23,9 @@ class Map:
             frag.cells.extend([cell])
             return frag
         except:
-            terrain = choice(list(Terrain.values())) 
-            cell = choice()
+            terrain = choice(list(Terrain.values()))
+            cell = Cell()
+            cell.terrain = terrain
             frag = MapFragment()
             frag.cells.extend([cell])
             return frag
