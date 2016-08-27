@@ -1,0 +1,13 @@
+import "trade.proto";
+
+message Commodity {
+    optional string name = 1;
+    optional float elasticity = 2;
+    optional float rarity = 3;
+    optional int32 id = 4; 
+}
+
+message Message {
+    optional Commodity commodity = 1;
+    optional Trade trade = 2;
+}

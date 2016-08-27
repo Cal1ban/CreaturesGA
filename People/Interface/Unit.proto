@@ -1,0 +1,6 @@
+message Unit {
+    optional int32 id = 1;
+    optional string name = 2;
+    optional int32 x_pos = 3;
+    optional int32 y_pos = 4;
+}

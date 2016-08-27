@@ -1,0 +1,6 @@
+message Trade {
+    optional int32 user_a_id = 1; 
+    optional int32 user_b_id = 2;
+    optional int32 commodity_id = 3;
+    optional float amount = 4;
+}

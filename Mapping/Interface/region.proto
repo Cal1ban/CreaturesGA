@@ -1,0 +1,18 @@
+import "map.proto";
+
+message TerrainDist {
+    optional float river = 1;
+    optional float sea = 2;
+    optional float mountain = 3;
+    optional float plain = 4;
+}
+
+message Region {
+    optional int32 id = 1;
+    repeated Cell cells = 2;
+    optional TerrainDist terrain = 3;
+}
+
+message Message {
+    optional Region region = 1;
+}

@@ -1,0 +1,13 @@
+message Relationship {
+    optional int32 id_a = 1
+    optional int32 id_b = 2
+    optional int32 closeness = 3
+    optional int32 affinity = 4
+}
+
+message RelationshipChange {
+    optional int32 id_a = 1
+    optional int32 id_b = 2
+    optional string attribute = 3
+    optional int32 change = 4
+}

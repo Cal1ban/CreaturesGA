@@ -1,0 +1,5 @@
+setup.py
+CreaturesGA.egg-info/PKG-INFO
+CreaturesGA.egg-info/SOURCES.txt
+CreaturesGA.egg-info/dependency_links.txt
+CreaturesGA.egg-info/top_level.txt

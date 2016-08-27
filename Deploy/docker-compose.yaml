@@ -1,0 +1,25 @@
+version: '2'
+services: 
+    zookeeper:
+        image: jplock/zookeeper
+        ports:
+            - "2181:2181"
+    kafka:
+        image: ches/kafka
+        ports:
+            - "9092:9092"
+        links:
+            - zookeeper
+        environment:
+            ZOOKEEPER_CONNECTION_STRING: zookeeper:2181
+        depends_on:
+            - zookeeper
+    redis:
+        image: redis
+        ports: 
+            - "6379:6379"
+    neo4j:
+        image: neo4j
+        ports:
+            - "7474:7474"
+            - "7687:7687"
