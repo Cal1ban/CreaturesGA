@@ -13,22 +13,36 @@
 
         <script src="lib/grow3.min.js"></script>
         <script src="lib/grow3.Runner.js"></script>
-
-<!--        <script src="build/grow3.min.js"></script> -->
+        <script src="lib/detector.js"></script>
+        <script src="http://grow3.zyxxy.de/js/lib/THREEx.FullScreen.js"></script>
+        <script src="http://grow3.zyxxy.de/js/lib/THREEx.WindowResize.js"></script>
+        <script src="http://grow3.zyxxy.de/js/lib/TrackballControls.js"></script>
 
         <script>
-            var testFun = function(g) {
+            var g3 = function(g) {
                 with(g) {
-                    rules({
-                        start : function() {
-                            cube();
+                  background(0x443333);
+                  var materials = [
+                    new THREE.MeshPhongMaterial({color: 0xbbbbbb}),
+                    new THREE.MeshPhongMaterial({color: 0xddbbbb})];
+                  maxDepth(100);
+                  rules({
+                        spiral: function () {
+                            cube(material(materials).scale(1.2));
+                            spiral(pitch(10).roll(13).move(0.6).scale(0.98));
+                        },
+                        start: function () {
+                            camera(move(30).yaw(90));
+                            for (var i = 0; i < 720; i += 15) {
+                                spiral(scale(0.9).yaw(i / 3).pitch(i));
+                            }
                         }
                     });
                 }
             };
             window.onload = function() {
                 var runner = new grow3.Runner(document.body);
-                runner.run(testFun);
+                runner.run(g3);
             };
         </script>
     </body>
