@@ -1,7 +1,7 @@
 
 var GA = (function() {
 
-  var TARGET = "George Seed is super cool and also a dude and other things besides";
+  var TARGET = "George Seed is seriously cool";
   var ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ";
   var MUT_PROB = 100;
 
